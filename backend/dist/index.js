@@ -5,7 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const dbConfig_1 = __importDefault(require("./utils/dbConfig"));
 dotenv_1.default.config();
+(0, dbConfig_1.default)();
 const app = (0, express_1.default)();
 const port = 3000;
 app.get("/", (req, res) => {
@@ -14,4 +16,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`server connected`);
 });
-  
