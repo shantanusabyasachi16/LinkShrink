@@ -1,5 +1,6 @@
 import  express  from "express";
 import { shortnerModel } from "../models/urlShort";
+import { message } from "antd";
 
 
 
@@ -28,7 +29,16 @@ export const  getallUrl = async (
     req: express.Request,
     res: express.Response,) =>{
     try {
-        
+      const shortUrl = await shortnerModel.find();
+      if (!shortUrl) {
+        res.status(404).json({
+            message:"Shorts Urls not found"
+        })
+      }else{
+        res.status(200).json({
+            shortUrl:shortUrl
+        })
+      }
     } catch (error) {
         
     }
@@ -37,8 +47,18 @@ export const  getUrl = async (
     req: express.Request,
     res: express.Response,) =>{
     try {
-        
+        const shortUrl = await shortnerModel.findOne({shorturl:req.params.id})
+   if (!shortUrl) {
+    res.status(404).json({
+        message:"Full Url not founded"
+    })
+   }else{
+    shortUrl.clicks++;
+    shortUrl.save();
+    res.redirect(`${shortUrl.fullUrl}`)
+   }
     } catch (error) {
+        console.log(error);
         
     }
 }
@@ -46,8 +66,14 @@ export const  deleteUrl = async (
     req: express.Request,
     res: express.Response,) =>{
     try {
-        
+        const shortUrl = await shortnerModel.findById({_id:req.params.id})
+        if (shortUrl) {
+         res.status(200).json({
+             message:"Url deleted succesfully"
+         })
+        }
     } catch (error) {
-        
+    console.log(error);
+     
     }
 }
