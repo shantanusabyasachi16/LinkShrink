@@ -1,13 +1,12 @@
-import express ,  { Request, Response } from "express";
-import {getallUrl, createUrl, deleteUrl, getUrl } from "../controllers/urlShortner";
-
-
+import express from "express";
+import { getallUrl, createUrl, deleteUrl, getUrl } from "../controllers/urlShortner";
 
 const router = express.Router();
 
-router.post("/urlshort",createUrl)
-router.get("/urlshort",getallUrl)
-router.get("/urlshort/:id",getUrl)
-router.post("/delete/:id",deleteUrl)
+// Typecasting route handlers to express.RequestHandler
+router.post("/urlshort", createUrl as express.RequestHandler);
+router.get("/urlshort", getallUrl as express.RequestHandler);
+router.get("/urlshort/:id", getUrl as express.RequestHandler);
+router.post("/delete/:id", deleteUrl as express.RequestHandler);  
 
 export default router;
