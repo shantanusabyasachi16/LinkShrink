@@ -1,18 +1,17 @@
-import { useState } from 'react'
+import * as React from 'react';
+import Header from './componentss/Header/Header';
+import Footer from './componentss/Footer/Footer';
 
-import './App.css'
-import { Button } from './components/ui/button'
-
-function App() {
-
-
-  return (
-    <>
-     <div> 
-      <Button>hiiiii</Button>
-     </div>
-    </>
-  )
+interface IAppProps {
 }
 
-export default App
+const App: React.FunctionComponent<IAppProps> = ()=> {
+  return(
+    <>
+    <Header/>
+    <Footer/>
+    </>
+  ) ;
+};
+
+export default App;
