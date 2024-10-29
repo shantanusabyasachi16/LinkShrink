@@ -4,9 +4,9 @@ interface IFooterProps {}
 
 const Footer: React.FunctionComponent<IFooterProps> = () => {
   return (
-    <footer className="container fixed buttom-0 w-full bg-slate-900 text-white text-center py-5">
+    <div className=" bg-slate-900 text-white text-base text-center py-5">
       © Copyright: LinkShrink - Tool to shorten a long link
-    </footer>
+    </div>
   );
 };
 
