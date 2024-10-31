@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { BackgroundBoxesDemo } from '../../Boxes';
+
 
 interface IUrlcontainerProps {
 }
 
 const Urlcontainer: React.FunctionComponent<IUrlcontainerProps> = () => {
   return(
-   
-<BackgroundBoxesDemo>
+  <div className='container mx-auto p-2'>
+  <div>
+    <p className='text-2xl text-center'>The only URL Shortner
+      <p className=' text-2xl text-center'>you'll ever need!</p>
+      
+    </p>
 
+  </div>
 
-
-
-
-  
-</BackgroundBoxesDemo>
+  </div>
 
    
   ) ;
