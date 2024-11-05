@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
-
+import axios from "axios"
+import { SERVER_URL } from '../../utils/endpoints';
 
 interface IUrlcontainerProps {
 }
@@ -11,8 +12,12 @@ const Urlcontainer: React.FunctionComponent<IUrlcontainerProps> = () => {
  const handelSubmit = async (e: React .FormEvent<HTMLFormElement>)=>{
 e.preventDefault();
 try {
-  
+ await axios.post(`${SERVER_URL}/urlshort`,{
+  fullUrl:FullUrl,
+ })
+ setFullUrl("");
 } catch (error) {
+  console.log(error);
   
 }
  }
