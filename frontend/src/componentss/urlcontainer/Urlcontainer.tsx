@@ -4,6 +4,7 @@ import { SERVER_URL } from "../../utils/Endpoints";
 import { Boxes } from "../../Boxes";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
+import Tablee from "../Table/Tablee";
 
 const Urlcontainer = () => {
   //interface IUrlcontainerProps {
@@ -55,7 +56,9 @@ const Urlcontainer = () => {
           </div>
         </form>
       </div>
+      <Tablee/>
     </div>
+    
   );
 };
 
