@@ -53,7 +53,14 @@ const Tablee: React.FunctionComponent = () => {
             {urlData.map((url, index) => (
               <TableRow key={index}>
                 <TableCell className="font-medium text-white">{url.fullUrl}</TableCell>
-                <TableCell className="text-white">{url.shorturl}</TableCell>
+                <a
+          href={url.fullUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          {url.shorturl}
+        </a>
                 <TableCell className="text-white">{url.clicks}</TableCell>
                 <TableCell>
                   <Button>

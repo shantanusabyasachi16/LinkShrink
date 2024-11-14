@@ -29,7 +29,7 @@ export const  getallUrl = async (
     req: express.Request,
     res: express.Response,) =>{
     try {
-      const shortUrl = await shortnerModel.find();
+      const shortUrl = await shortnerModel.find().sort({createdAt:-1});
       if (!shortUrl) {
         res.status(404).json({
             message:"Shorts Urls not found"
