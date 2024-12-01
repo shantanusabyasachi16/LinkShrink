@@ -30,16 +30,16 @@ const Urlcontainer = () => {
 
       <div className="container mx-auto p-2">
         <div></div>
-        <p className="text-7xl text-center text-white">
+        <p className="text-7xl text-center text-white font-bold">
           The only URL Shortner
-          <p className=" text-7xl text-center text-white">you'll ever need!!</p>
+          <p className=" text-7xl text-center text-white mt-5">you'll ever need!! 👇</p>
         </p>
         <form onSubmit={handelSubmit}>
           <div className="flex">
           <div className="relative w-full mt-20 flex items-center">
   <Input
     type="text"
-    placeholder="Enter your link here..."
+    placeholder="Enter your link here....."
     required
     className="w-full text-gray-900 border rounded-lg p-4"
     value={FullUrl}
@@ -47,9 +47,9 @@ const Urlcontainer = () => {
   />
   <Button
     type="submit"
-    className="ml-4 px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-400 transition"
+    className="ml-4 px-6 py-3 bg-blue-600 text-md text-white font-semibold rounded-lg hover:bg-blue-700 transition"
   >
-    Shorten URL
+    Shorten URL!
   </Button>
 </div>
 

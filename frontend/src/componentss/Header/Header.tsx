@@ -1,15 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface IHeaderProps {}
 
 const Header: React.FunctionComponent<IHeaderProps> = () => {
   return (
-    <div className="bg-slate-900 ">
-      <div className="container p-2 mx-auto">
-        <nav className="py-5">
-          <div className="text-3xl text-white">
-            LinkShrink
-          </div>
+    <div className="bg-slate-900 shadow-md">
+      <div className="container p-4 mx-auto">
+        <nav className="py-3 flex ">
+          <h1 className="text-4xl text-blue-700 font-bold ">LinkShrink</h1>
         </nav>
       </div>
     </div>
