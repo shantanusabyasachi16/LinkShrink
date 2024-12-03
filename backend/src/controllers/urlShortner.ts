@@ -66,7 +66,7 @@ export const  deleteUrl = async (
     req: express.Request,
     res: express.Response,) =>{
     try {
-        const shortUrl = await shortnerModel.findByIdAndDelete({_id:req.params.id})
+      const shortUrl = await shortnerModel.findByIdAndDelete(req.params.id);
         if (shortUrl) {
          res.status(200).json({
              message:"Url deleted succesfully"

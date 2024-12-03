@@ -11,6 +11,7 @@ import {
 import { SERVER_URL } from "../../utils/Endpoints";
 import axios from "axios";
 import { Button } from "../../components/ui/button";
+import Footer from "../Footer/Footer";
 
 interface UrlData {
   fullUrl: string;
@@ -34,45 +35,60 @@ const Tablee: React.FunctionComponent = () => {
 
     fetchData();
   }, []);
-  
-  const handleDelete = async()=>{
-    try {
-      const response = await axios.post(`${SERVER_URL}/delete/${id}`);
-    } catch (error) {
-      
-    }
 
-  }
+  const handleDelete = async (id: string): Promise<void> => {
+    try {
+      await axios.post(`${SERVER_URL}/delete/${id}`);
+      setUrlData(urlData.filter((url) => url.shorturl !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div className="container mx-auto pt-2 pb-10">
+    <div className="container mx-auto pt-2 pb-10 m-10  ">
       <div className="relative overflow-x-auto ">
         <Table>
-          <TableCaption>A list of your recent URLs.</TableCaption>
+          <TableCaption className="text-white ">A list of your recent URLs.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px] text-xl text-white  font-semibold">Full URL</TableHead>
-              <TableHead className="text-xl text-white  font-semibold" >Short URL</TableHead>
-              <TableHead className=" text-xl text-white  font-semibold">Clicks</TableHead>
-              <TableHead className="text-xl text-white  font-semibold">Delete</TableHead>
-              <TableHead className="text-right text-xl text-white  font-semibold">Action</TableHead>
+              <TableHead className="w-[100px] text-xl text-white  font-bold">
+                Full URL
+              </TableHead>
+              <TableHead className="text-xl text-white  font-bold">
+                Short URL
+              </TableHead>
+              <TableHead className=" text-xl text-white  font-bold">
+                Clicks
+              </TableHead>
+              <TableHead className="text-xl text-white  font-bold">
+                Delete
+              </TableHead>
+              <TableHead className="text-right text-xl text-white  font-bold">
+                Action
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {urlData.map((url, index) => (
               <TableRow key={index}>
-                <TableCell className="font-medium text-white pb-2">{url.fullUrl}</TableCell>
-                <a
-          href={url.fullUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:underline  "
-        >
-          {url.shorturl}
-        </a>
-                <TableCell className="text-white">{url.clicks}</TableCell>
+                <TableCell className="font-medium text-white text-xl ">
+                  {url.fullUrl}
+                </TableCell>
+                <TableCell className="font-medium text-white text-xl" >
+                  <a
+                    href={url.fullUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-800 hover:underline "
+                  >
+                    {url.shorturl}
+                  </a>
+                </TableCell>
+
+                <TableCell className="font-medium text-white text-xl ">{url.clicks}</TableCell>
                 <TableCell>
-                  <Button onClick={handleDelete}>
+                  <Button className="bg-blue-700 hover:bg-blue-900" onClick={() => handleDelete(url.shorturl)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -90,19 +106,21 @@ const Tablee: React.FunctionComponent = () => {
                   </Button>
                 </TableCell>
                 <TableCell className="text-right">
-                <Button
-      className="bg-gray-700 hover:bg-gray-800 text-white rounded px-3 py-1"
-      onClick={() => navigator.clipboard.writeText(url.shorturl)}
-    >
-      Copy
-    </Button>
+                  <Button
+                    className="bg-blue-700 hover:bg-blue-900 text-white rounded px-3 py-1"
+                    onClick={() => navigator.clipboard.writeText(url.shorturl)}
+                  >
+                    Copy
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+   
     </div>
+    
   );
 };
 

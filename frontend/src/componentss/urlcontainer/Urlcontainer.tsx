@@ -23,7 +23,7 @@ const Urlcontainer = () => {
     }
   };
   return (
-    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center ">
+    <div className="h-screen relative w-full overflow-hidden bg-gradient-to-r from-sky-400 to-blue-900  flex flex-col items-center justify-center ">
       <div className="absolute inset-0 w-full h-full z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
 
       <Boxes />
@@ -31,9 +31,12 @@ const Urlcontainer = () => {
       <div className="container mx-auto p-2">
         <div></div>
         <p className="text-7xl text-center text-white font-bold">
-          The only URL Shortner
-          <p className=" text-7xl text-center text-white mt-5">you'll ever need!! 👇</p>
-        </p>
+  The only URL Shortener
+  <span className="block text-6xl text-center text-white mt-5 animate-pulse ">
+    you'll ever need!! 👇
+  </span>
+</p>
+
         <form onSubmit={handelSubmit}>
           <div className="flex">
           <div className="relative w-full mt-20 flex items-center">
@@ -41,13 +44,13 @@ const Urlcontainer = () => {
     type="text"
     placeholder="Enter your link here....."
     required
-    className="w-full text-gray-900 border rounded-lg p-4"
+    className="w-full text-gray-900 border rounded-lg p-6"
     value={FullUrl}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullUrl(e.target.value)}
   />
   <Button
     type="submit"
-    className="ml-4 px-6 py-3 bg-blue-600 text-md text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+    className="ml-4 px-6 py-6 bg-blue-600 text-md text-white font-semibold rounded-lg hover:bg-blue-900 transition"
   >
     Shorten URL!
   </Button>
